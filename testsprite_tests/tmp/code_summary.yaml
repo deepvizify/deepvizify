@@ -1,0 +1,60 @@
+version: "2"
+type: frontend
+tech_stack:
+  - TypeScript
+  - React
+  - Vite
+  - Tailwind CSS
+  - Shadcn UI
+  - Supabase
+  - TanStack Query
+  - Framer Motion
+  - Recharts
+routes:
+  - path: /
+    file: src/pages/Index.tsx
+    auth_required: false
+    description: Landing page
+  - path: /login
+    file: src/components/auth/SignInForm.tsx
+    auth_required: false
+    description: User login page
+  - path: /signup
+    file: src/components/auth/SignUpForm.tsx
+    auth_required: false
+    description: User signup page
+  - path: /dashboard
+    file: src/pages/Dashboard.tsx
+    auth_required: true
+    description: Main user dashboard
+  - path: /projects
+    file: src/pages/Projects.tsx
+    auth_required: true
+    description: User projects list
+  - path: /profile
+    file: src/pages/Profile.tsx
+    auth_required: true
+    description: User profile page
+features:
+  - name: User Authentication
+    description: Login and signup functionality
+    files:
+      - src/components/auth/SignInForm.tsx
+      - src/components/auth/SignUpForm.tsx
+      - src/contexts/AuthContext.tsx
+    entry_route: /login
+    user_interactions:
+      - Fill email input field
+      - Fill password input field
+      - Click Sign In button
+    auth_required: false
+  - name: Dashboard Visualization
+    description: View data visualizations on the dashboard
+    files:
+      - src/pages/Dashboard.tsx
+      - src/components/DashboardCharts.tsx
+    entry_route: /dashboard
+    user_interactions:
+      - View charts and data summaries
+    auth_required: true
+known_limitations: []

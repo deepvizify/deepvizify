@@ -1,0 +1,2222 @@
+[
+  {
+    "id": "TC001",
+    "title": "Run cleaning analysis and apply Mean fill on a numeric column",
+    "description": "Verifies that a user can start a cleaning analysis, choose Mean fill for a numeric column, apply it, and see completeness improve.",
+    "category": "Data Cleaning",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Cleaning\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Start Analysis\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Missing values\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Apply Mean fill and verify completeness metric updates",
+    "description": "Verifies that applying Mean fill results in a visible update to the completeness metric.",
+    "category": "Data Cleaning",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Cleaning\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Start Analysis\" button"
+      },
+      {
+        "type": "action",
+        "description": "Select \"Mean fill\" from the fix action dropdown for a numeric column"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Apply\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Completeness\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Detect duplicates and remove them",
+    "description": "Verifies that duplicate rows are detected by analysis and can be removed via the Remove Duplicates action.",
+    "category": "Data Cleaning",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Cleaning\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Start Analysis\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Duplicates\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Remove duplicates and confirm duplicate count decreases",
+    "description": "Verifies that after clicking Remove Duplicates, the visible duplicate count decreases or shows a reduced state.",
+    "category": "Data Cleaning",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Cleaning\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Start Analysis\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Remove Duplicates\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Duplicates\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Prevent Mean fill on a non-numeric column",
+    "description": "Verifies that Mean fill cannot be applied to a non-numeric column and an action disabled message is shown.",
+    "category": "Data Cleaning",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Cleaning\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Start Analysis\" button"
+      },
+      {
+        "type": "action",
+        "description": "Select \"Mean fill\" from the fix action dropdown for a non-numeric column"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"disabled\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Apply button remains unavailable when invalid fix is selected",
+    "description": "Verifies that the Apply action cannot proceed when an invalid Mean fill selection is made for a non-numeric column.",
+    "category": "Data Cleaning",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Cleaning\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Start Analysis\" button"
+      },
+      {
+        "type": "action",
+        "description": "Select \"Mean fill\" from the fix action dropdown for a non-numeric column"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Cannot apply\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Start Analysis shows results sections for missing values and duplicates",
+    "description": "Verifies that after starting analysis, the page shows key result sections for data quality findings.",
+    "category": "Data Cleaning",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Cleaning\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Start Analysis\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Missing values\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Duplicates\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Run analysis and verify Apply action produces a visible success state",
+    "description": "Verifies that applying a valid cleaning fix produces a visible confirmation on the UI.",
+    "category": "Data Cleaning",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Cleaning\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Start Analysis\" button"
+      },
+      {
+        "type": "action",
+        "description": "Select \"Mean fill\" from the fix action dropdown for a numeric column"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Apply\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Applied\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "EDA summary table loads from Dashboard",
+    "description": "Verifies that the EDA area can be opened from the dashboard and displays an auto-generated summary table for dataset columns.",
+    "category": "Exploratory Data Analysis (EDA)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"EDA\" tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Summary\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Summary table\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "View numeric column distribution histogram in EDA",
+    "description": "Verifies that a numeric column distribution histogram can be viewed and is rendered in the EDA area.",
+    "category": "Exploratory Data Analysis (EDA)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"EDA\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Select a numeric column from the column dropdown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Histogram\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Histogram renders after switching numeric columns",
+    "description": "Verifies the histogram updates/renders when a different numeric column is selected.",
+    "category": "Exploratory Data Analysis (EDA)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"EDA\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Select a numeric column from the column dropdown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Histogram\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Select a different numeric column from the column dropdown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Histogram\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Correlation matrix heatmap view opens and renders",
+    "description": "Verifies that correlation computation results can be viewed via a heatmap in the EDA tab.",
+    "category": "Exploratory Data Analysis (EDA)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"EDA\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Correlation\" section or tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Heatmap\" view option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Correlation heatmap\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Correlation heatmap remains visible after scroll",
+    "description": "Verifies the correlation heatmap stays rendered/visible when the user scrolls within the EDA view.",
+    "category": "Exploratory Data Analysis (EDA)",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"EDA\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Correlation\" section or tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Heatmap\" view option"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the \"Correlation heatmap\" section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Correlation heatmap\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "EDA shows 'No data' when dataset is not loaded",
+    "description": "Verifies the EDA tab displays a clear empty-state message when there is no dataset loaded.",
+    "category": "Exploratory Data Analysis (EDA)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"EDA\" tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"No data\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Upload\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Switch between Visualization and EDA tabs successfully",
+    "description": "Verifies that the user can navigate between Visualization and EDA sections and still view EDA content.",
+    "category": "Exploratory Data Analysis (EDA)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Visualization\" tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Visualization\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"EDA\" tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Summary\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Render a bar chart after selecting X and Y columns",
+    "description": "Verifies a user can select X and Y columns and render a Bar chart in the Visualization tab.",
+    "category": "Visualization (Chart Builder)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Visualization\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Select an X axis column from the X column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Select a numeric Y axis column from the Y column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Bar\" chart type option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Chart\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Switch between chart types (Area to Bar) after columns are selected",
+    "description": "Verifies changing chart types updates the rendered chart when X and Y columns are already selected.",
+    "category": "Visualization (Chart Builder)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Visualization\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Select an X axis column from the X column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Select a numeric Y axis column from the Y column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Area\" chart type option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Chart\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Bar\" chart type option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Chart\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Render a pie chart after selecting a numeric metric column",
+    "description": "Verifies a user can render a Pie chart after choosing columns, confirming chart remains visible after switching type.",
+    "category": "Visualization (Chart Builder)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Visualization\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Select an X axis column from the X column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Select a numeric Y axis column from the Y column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Pie\" chart type option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Chart\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Export chart as PNG after selecting X and Y columns",
+    "description": "Verifies the Export Chart action is available after a chart is configured and indicates export is initiated.",
+    "category": "Visualization (Chart Builder)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Visualization\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Select an X axis column from the X column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Select a numeric Y axis column from the Y column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Bar\" chart type option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Chart\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Export Chart\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Export\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Validation error when Y column is non-numeric for Bar chart",
+    "description": "Verifies selecting a non-numeric Y column and choosing Bar chart shows the expected validation error.",
+    "category": "Visualization (Chart Builder)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Visualization\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Select an X axis column from the X column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Select a non-numeric column from the Y column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Bar\" chart type option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Y must be numeric\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "Export button blocked or prompts user when columns are not selected",
+    "description": "Verifies the UI prevents exporting when the chart is not fully configured (missing X and/or Y selection).",
+    "category": "Visualization (Chart Builder)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Visualization\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Export Chart\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Select\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC022",
+    "title": "Changing X column updates the rendered chart",
+    "description": "Verifies that selecting a different X axis column keeps the chart visible and reflects an updated configuration state.",
+    "category": "Visualization (Chart Builder)",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Visualization\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Select an X axis column from the X column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Select a numeric Y axis column from the Y column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Bar\" chart type option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Chart\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Select a different X axis column from the X column dropdown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Chart\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC023",
+    "title": "Recover from non-numeric Y validation by selecting a numeric Y column",
+    "description": "Verifies the validation error clears after correcting Y selection to a numeric column and chart renders.",
+    "category": "Visualization (Chart Builder)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Visualization\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Select an X axis column from the X column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Select a non-numeric column from the Y column dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Bar\" chart type option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Y must be numeric\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Select a numeric Y axis column from the Y column dropdown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Chart\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC024",
+    "title": "Generate AI insights from Analytics tab and display insights panel",
+    "description": "Verifies a user can generate AI insights and see the insights panel populated with returned content.",
+    "category": "AI Analytics (Insights Generation)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Analytics\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Generate Insights\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"AI insights\" panel is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC025",
+    "title": "Generate AI insights shows readable insights text content",
+    "description": "Verifies generated insights include visible, human-readable text content after completion.",
+    "category": "AI Analytics (Insights Generation)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Analytics\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Generate Insights\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Insights\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC026",
+    "title": "Ask a question in Chart Bot and display AI answer",
+    "description": "Verifies a user can ask the Chart Bot a question and see an AI-generated answer displayed.",
+    "category": "AI Analytics (Insights Generation)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Analytics\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click into the \"Chart Bot\" question input field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"What are the key trends in this dataset?\" into the \"Chart Bot\" question input field"
+      },
+      {
+        "type": "action",
+        "description": "Press \"Enter\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Chart Bot\" answer area is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC027",
+    "title": "Chart Bot answer includes a suggested chart recommendation",
+    "description": "Verifies the Chart Bot response surfaces a visible chart suggestion to the user.",
+    "category": "AI Analytics (Insights Generation)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Analytics\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click into the \"Chart Bot\" question input field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Suggest a chart to visualize anomalies.\" into the \"Chart Bot\" question input field"
+      },
+      {
+        "type": "action",
+        "description": "Press \"Enter\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Suggested\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC028",
+    "title": "AI integration error message appears when insights generation fails",
+    "description": "Verifies the UI shows an AI integration error message when insights generation fails or times out.",
+    "category": "AI Analytics (Insights Generation)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Analytics\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Generate Insights\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"AI integration error\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC029",
+    "title": "Generate Insights button remains usable after an error message",
+    "description": "Verifies the user can attempt to generate insights again after seeing an AI integration error state.",
+    "category": "AI Analytics (Insights Generation)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Analytics\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Generate Insights\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"AI integration error\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Generate Insights\" button"
+      }
+    ]
+  },
+  {
+    "id": "TC030",
+    "title": "Chart Bot does not submit empty question",
+    "description": "Verifies the Chart Bot prevents sending an empty question and surfaces a visible validation or no-response state.",
+    "category": "AI Analytics (Insights Generation)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Analytics\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click into the \"Chart Bot\" question input field"
+      },
+      {
+        "type": "action",
+        "description": "Press \"Enter\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Please enter\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC031",
+    "title": "Generate a PDF report with selected datasets and charts",
+    "description": "Verifies a user can create a report from the dashboard Reports area by selecting content and generating a PDF.",
+    "category": "Reports (Export)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Reports\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create First Report\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Generate PDF\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC032",
+    "title": "Validate error when generating PDF with no dataset selected",
+    "description": "Verifies the report creator blocks PDF generation until at least one dataset is selected.",
+    "category": "Reports (Export)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Reports\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create First Report\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Generate PDF\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Select at least one dataset\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC033",
+    "title": "Reports tab is reachable from dashboard and shows report creation entry point",
+    "description": "Verifies the Reports area is accessible and presents the primary call-to-action to create a report.",
+    "category": "Reports (Export)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Reports\" tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Create First Report\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC034",
+    "title": "Report creation screen shows dataset and chart selection controls",
+    "description": "Verifies the report creation UI exposes controls to choose datasets and charts before export.",
+    "category": "Reports (Export)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Reports\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create First Report\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Select\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC035",
+    "title": "Attempt PDF generation without chart selection still prompts for required dataset selection",
+    "description": "Verifies validation messaging prioritizes required dataset selection even if charts are not selected.",
+    "category": "Reports (Export)",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Reports\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create First Report\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Generate PDF\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Select at least one dataset\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC036",
+    "title": "Create a new project successfully from Projects page",
+    "description": "Verifies a logged-in user can create a project and see it appear in the projects list.",
+    "category": "Projects & Dataset Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" in the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create New Project\" button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"QA Project Alpha\" into the project name field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"QA Project Alpha\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC037",
+    "title": "Project list shows newly created project after returning to Projects",
+    "description": "Verifies a newly created project remains visible in the list after leaving and returning to the Projects page in the same session.",
+    "category": "Projects & Dataset Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" in the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create New Project\" button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"QA Project Persist\" into the project name field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"QA Project Persist\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Dashboard\" in the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" in the main navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"QA Project Persist\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC038",
+    "title": "Create project validation: empty name shows 'Name required'",
+    "description": "Verifies the Create Project form blocks submission and shows a validation message when name is empty.",
+    "category": "Projects & Dataset Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" in the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create New Project\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Name required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC039",
+    "title": "Create project validation: whitespace-only name is rejected",
+    "description": "Verifies the Create Project form does not accept a name that is only spaces and shows a required/validation message.",
+    "category": "Projects & Dataset Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" in the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create New Project\" button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"   \" into the project name field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Name required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC040",
+    "title": "Open a project from the Projects list",
+    "description": "Verifies clicking a project entry opens the project details area where dataset actions are available.",
+    "category": "Projects & Dataset Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" in the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create New Project\" button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"QA Project Open\" into the project name field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the project entry \"QA Project Open\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Upload dataset\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC041",
+    "title": "Projects page loads and shows key UI elements",
+    "description": "Verifies the Projects page is accessible to a logged-in user and core controls are visible.",
+    "category": "Projects & Dataset Management",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" in the main navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify page title contains \"Projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Create New Project\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC042",
+    "title": "View profile page shows current account details",
+    "description": "Verifies an authenticated user can reach the Profile page and see their account details displayed.",
+    "category": "Profile Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Profile\" link in the main navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/profile\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Profile\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC043",
+    "title": "Edit profile: open edit mode from profile page",
+    "description": "Verifies the user can enter edit mode from the Profile page.",
+    "category": "Profile Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Profile\" link in the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Edit\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the \"Save\" button is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC044",
+    "title": "Update profile fields and save successfully",
+    "description": "Verifies the user can edit profile fields, save changes, and see a success confirmation.",
+    "category": "Profile Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Profile\" link in the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Edit\" button"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Updated Display Name\" into the display name field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Success\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC045",
+    "title": "Update email with invalid format shows validation error",
+    "description": "Verifies saving an invalid email in edit mode shows a validation error on the email field.",
+    "category": "Profile Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Profile\" link in the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Edit\" button"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"not-an-email\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"invalid\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC046",
+    "title": "Cancel editing leaves profile in view mode without saving",
+    "description": "Verifies the user can exit edit mode without saving changes.",
+    "category": "Profile Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Profile\" link in the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Edit\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Cancel\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the \"Edit\" button is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC047",
+    "title": "Attempt to save with required field empty shows validation error",
+    "description": "Verifies required profile fields cannot be saved when left blank and an on-screen validation message appears.",
+    "category": "Profile Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Profile\" link in the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Edit\" button"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"\" into the display name field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC048",
+    "title": "Save button becomes available and remains visible in edit mode",
+    "description": "Verifies edit mode presents an actionable Save control to persist changes.",
+    "category": "Profile Management",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Sign in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Profile\" link in the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Edit\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the \"Save\" button is visible"
+      }
+    ]
+  }
+]

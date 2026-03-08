@@ -1,0 +1,350 @@
+📊
+DeepVizify
+AI Analytics SaaS
+Pipeline v2.0
+Complete Workflow Document · For AI Understanding
+DATA SCIENCE
+PIPELINE
+DeepVizify ka complete workflow — data kahan se aata hai, kya hota hai, kya karna baaki hai, aur AI ko kya samajhna chahiye
+
+01
+DeepVizify — App Overview & Current State
+🎯
+App Ka Maqsad
+Data Analytics aur Data Science SaaS platform — users apna data upload karte hain, clean karte hain, visualize karte hain, aur AI se insights lete hain. Target: non-technical business users bhi use kar sakein.
+✅
+Kya Kaam Kar Raha Hai
+Dashboard UI ✓ | Navigation ✓ | Visualization tab (charts) ✓ | Analytics Engine (hardcoded) ✓ | Data Cleaning Scanner UI ✓ | Reports tab (empty) ✓ | Basic layout & design ✓
+❌
+Kya Missing Hai
+Real file upload & parsing ✗ | Database connection ✗ | Actual data cleaning logic ✗ | Real EDA generation ✗ | ML/AutoML engine ✗ | Report generation ✗ | User authentication ✗ | Data persistence ✗
+🏗️
+Current Tech Stack
+Frontend: React + Vite (port 5173) | UI: Recharts for charts | State: Local only (no backend connected) | Data: All hardcoded/demo | Backend: Not yet integrated
+👤
+Target Users
+Business Analysts, Marketing teams, Small-medium businesses, Startup founders — jo data se decisions lena chahte hain lekin Python/coding nahi jaante
+💰
+Business Model
+Freemium: Free plan (basic features) → Pro plan (ML Studio, unlimited charts, AI insights) → Enterprise (white-label, API access, team features)
+02
+Complete Data Flow — Entry se Exit Tak
+📥
+DATA
+INPUT
+→
+🔍
+PARSE &
+VALIDATE
+→
+🧹
+CLEAN &
+PREPROCESS
+→
+🔬
+EDA
+ANALYSIS
+→
+📊
+VISUALIZE
+→
+🤖
+AI
+INSIGHTS
+→
+📄
+REPORTS
+EXPORT
+03
+Detailed Pipeline — Har Step Complete
+1
+📥 DATA INPUT — Data Kahan Se Aayega
+Partially Done
+Backend Missing
+Ye pehla aur sabse zaroori step hai. App ko data milna chahiye — 3 main sources hain:
+
+1. File Upload — User CSV, Excel (.xlsx), JSON files upload kare. App screenshots mein ye UI exist karta hai lekin actual file parsing/reading logic nahi hai. "Browse Files" button click hota hai lekin data process nahi hota.
+
+2. Database Connection — User apna PostgreSQL, MySQL, MongoDB, Supabase connect kare aur directly query kare. Ye feature abhi bilkul missing hai.
+
+3. API / Live Data — REST API endpoint se data pull kare (Google Sheets API, Airtable, Salesforce etc). Ye bhi missing hai.
+
+Feature	Description	Status	Priority
+CSV Upload & Parse	File ko read karo, headers detect karo, rows count karo, data type detect karo	Missing Logic	🔴 Critical
+Excel (.xlsx) Upload	Multiple sheets handle karo, merged cells handle karo, SheetJS use karo	Missing	🔴 Critical
+JSON Upload	Nested JSON flatten karo, array of objects handle karo	Missing	🟡 High
+File Preview	Upload ke baad table mein pehle 10 rows dikhao, column names, row count	Missing	🔴 Critical
+Database Connection	PostgreSQL/MySQL connection string, query execute, result import	Not Built	🔵 Phase 2
+Sample Datasets	Built-in demo datasets jaise Iris, Titanic, Sales data taake user seedha explore kar sake	Missing	🟡 High
+100MB Limit Handling	Large files ke liye chunked upload, progress bar, error handling	UI Only	🟡 High
+Papa Parse
+SheetJS / XLSX
+FileReader API
+Multer (Node backend)
+Drag & Drop API
+2
+🔍 PARSE & VALIDATE — Data Samajhna
+Not Built
+Must Build
+Data upload ke baad app ko automatically samajhna chahiye ke data kaisa hai. Ye automatic hona chahiye — user ko manually kuch nahi batana pare.
+
+Auto Column Detection: Har column ka naam, data type (number, text, date, boolean, category), unique values count, null count automatically detect ho.
+
+Schema Inference: "age" column integer hai, "name" text hai, "date" datetime hai — ye automatically pata chale bina user ke input ke.
+
+Feature	Description	Status	Priority
+Column Type Detection	Integer, Float, String, DateTime, Boolean, Categorical auto-detect	Missing	🔴 Critical
+Data Summary Stats	Mean, median, std, min, max, null%, unique count per column	Missing	🔴 Critical
+Column Info Panel	Upload ke baad sidebar mein columns ki info dikhao	Missing	🔴 Critical
+Format Validation	File corrupt hai? Empty hai? Headers missing hain? User ko clear error do	Missing	🟡 High
+Dataset Metadata Store	Dataset ka naam, size, upload time, column count save karo (IndexedDB ya backend)	Missing	🔴 Critical
+danfo.js
+Arquero
+Papa Parse (types)
+Date-fns (date parse)
+IndexedDB / localStorage
+3
+🧹 DATA CLEANING — "Cleaning" Tab
+UI Exists
+Logic Missing
+App mein "Cleaning" tab exist karta hai aur "Data Quality Scanner" dikhta hai (screenshot 2). "Start Analysis" button bhi hai. Lekin koi actual cleaning logic nahi hai — ye sirf UI hai.
+
+Jo Dikhta Hai: Data Health panel mein Completeness 85%, Accuracy 92%, Consistency 78% show hota hai — lekin ye hardcoded values hain, real data se calculate nahi hoti.
+
+Jo Hona Chahiye: Upload kiye gaye data par actually analysis run ho, real missing values count ho, duplicates dhundhe jayein, outliers detect hon, aur user ko fix karne ke options milein.
+
+Feature	Description	Status	Priority
+Missing Values Detection	Har column mein null/undefined/empty count karo, % mein dikhao	Logic Missing	🔴 Critical
+Missing Values Fix	Options: Mean/Median fill, Mode fill, Drop row, Custom value fill	Not Built	🔴 Critical
+Duplicate Detection	Same rows dhundo, count dikhao, remove option do	Not Built	🔴 Critical
+Outlier Detection	IQR method ya Z-score se outliers detect karo, box plot dikhao	Not Built	🟡 High
+Data Type Casting	Column ka type change karo — string ko number mein, date format fix	Not Built	🟡 High
+Rename Columns	Column names edit karne ka UI	Missing	🔵 Phase 2
+Auto-Clean Option	"Auto Fix All" button jo common issues automatically fix kare	Missing	🟡 High
+Real Health Score	Completeness, Accuracy, Consistency ko real data se calculate karo	Hardcoded	🔴 Critical
+Cleaning History/Log	Kya kya changes kiye — undo option ke saath	Missing	🔵 Phase 2
+danfo.js (fillNa, dropDuplicates)
+Statistics.js
+Simple Statistics
+Custom IQR function
+4
+🔬 EDA — Exploratory Data Analysis
+Not Built
+Core Feature
+Data science ka dil — EDA mein hum data ko explore karte hain bina koi assumption ke. Ye step automatically honi chahiye jab user data upload kare. DeepVizify mein abhi ye manually Visualization tab se karna padta hai, lekin wahan bhi data real nahi hai.
+
+Ideal Flow: Data upload → Auto EDA generate ho → Summary statistics, distributions, correlations, top patterns — sab automatically ek "Auto EDA" section mein appear ho.
+
+Feature	Description	Status	Priority
+Auto Summary Table	Har column ka: count, mean, std, min, 25%, 50%, 75%, max	Missing	🔴 Critical
+Distribution Histograms	Numeric columns ke liye auto histogram, bin size adjust karne ki option	Missing	🔴 Critical
+Correlation Matrix	Numeric columns ka heatmap — kaunse columns ek doosre se related hain	Missing	🔴 Critical
+Missing Values Heatmap	Visually dikhao kahan kahan null values hain (row x column grid)	Missing	🟡 High
+Category Value Counts	Text/categorical columns ke liye bar chart — top values kon si hain	Missing	🔴 Critical
+Scatter Plot Matrix	Numeric columns ke pairs ka scatter plot — patterns dhundne ke liye	Missing	🔵 Phase 2
+Time Series Detection	Date column detect karo aur auto line chart dikhao	Missing	🟡 High
+Auto Insights Text	"Column X mein 23% null values hain" jaise plain English insights	Missing	🟡 High
+Recharts (already installed)
+D3.js
+danfo.js describe()
+Simple Statistics (correlation)
+5
+📊 VISUALIZATION — "Visualization" Tab
+UI Exists
+Demo Data Only
+Visualization tab exist karta hai aur charts bhi dikhte hain (screenshots 4, 5). Area chart, Bar chart, Pie chart options hain. "Performance Metrics Exploration", "Customer Growth Trend", "Category Revenue Share" charts hain — lekin ye sab hardcoded demo data hai.
+
+Problem: User ka apna uploaded data in charts mein nahi aata. Axis select karne ka koi option nahi. Custom chart banana possible nahi.
+
+Feature	Description	Status	Priority
+Column Selector (X & Y axis)	User select kare kaunsa column X axis par, kaunsa Y axis par	Missing	🔴 Critical
+Chart from Real Data	Uploaded dataset se actual chart render ho	Not Connected	🔴 Critical
+Chart Type Switch	Area/Bar/Pie buttons actually kaam karein aur chart type change ho	UI Only	🔴 Critical
+Filter / Aggregation	Group by column, sum/count/avg select karna	Missing	🟡 High
+Chart Title Edit	User apna chart title de sake	Missing	🔵 Phase 2
+Color Customization	Chart colors change karne ka option	Missing	🔵 Phase 2
+Export Chart (PNG/SVG)	"Export" button actually chart image download kare	Button Exists	🟡 High
+Scatter Plot	2 numeric columns ka scatter plot	Missing	🟡 High
+Heatmap Chart	Correlation ya pivot table heatmap	Missing	🔵 Phase 2
+Dashboard Save	Multiple charts save kar ke ek dashboard bana sake	Missing	🔵 Phase 2
+Recharts ✓ (already used)
+Chart.js (alternative)
+html2canvas (export)
+React-select (column picker)
+6
+🤖 AI ANALYTICS — "Analytics" Tab
+UI Exists
+Hardcoded
+Analytics tab mein AI Analytics Engine dikhta hai (screenshots 6, 7). Revenue Growth +23%, Customer Retention +15%, Market Opportunity "High", Anomaly Detected "Spike" — ye sab dikhta hai. AI Chart Bot bhi hai. Smart Recommendations bhi hain.
+
+Problem: Ye sab 100% hardcoded hai. Koi bhi real data se generate nahi ho raha. AI Chart Bot mein koi actual AI nahi hai. "Neural Engine Active" badge sirf show ke liye hai.
+
+Real Implementation: User ke actual data par statistical analysis run ho. Claude/OpenAI API se real insights generate hon. Chart Bot ko actual AI se power kiya jaye.
+
+Feature	Description	Status	Priority
+Real Statistical Analysis	Uploaded data par mean, trend, growth rate etc calculate karo	Hardcoded	🔴 Critical
+AI Insights Generation	Claude/OpenAI API call — data summary bhejo, insights wapis lao	Not Integrated	🔴 Critical
+AI Chart Bot (Real)	"What are the top selling categories?" → AI actually data analyze kare	Not Working	🟡 High
+Anomaly Detection	Statistical methods (Z-score, IQR) se real anomalies detect karo	Hardcoded	🟡 High
+Trend Analysis	Time series trend detect karo — increasing, decreasing, seasonal	Hardcoded	🟡 High
+Smart Recommendations	Real data ke basis par actionable suggestions (currently hardcoded)	Hardcoded	🟡 High
+ML/AutoML (Pro Feature)	Auto-classify/regression problem type, train best model	Not Built	🔵 Phase 3
+Prediction API	Trained model se new data par predictions lena	Not Built	🔵 Phase 3
+Claude API (Anthropic)
+OpenAI API
+Simple Statistics (anomaly)
+ml5.js (browser ML)
+TensorFlow.js (neural nets)
+7
+📄 REPORTS — "Reports" Tab
+Empty
+Must Build
+Reports tab mein sirf "No Reports Yet" dikhta hai (screenshot 8) aur "Create First Report" button hai. Ye completely empty section hai.
+
+Jo Hona Chahiye: User apna analysis karne ke baad ek professional report export kar sake — PDF ya HTML format mein — jisme charts, statistics, AI insights, aur recommendations sab included hon.
+
+Feature	Description	Status	Priority
+Auto Report Generation	EDA + cleaning + insights sab ek report mein compile karo	Not Built	🔴 Critical
+PDF Export	jsPDF ya Puppeteer se professional PDF banao with charts	Not Built	🔴 Critical
+HTML Report Export	Interactive HTML report jo share kiya ja sake	Not Built	🟡 High
+Report Templates	Sales Report, EDA Report, Executive Summary — templates select karo	Not Built	🔵 Phase 2
+Scheduled Reports	Weekly/monthly auto-generate aur email karo	Not Built	🔵 Phase 3
+Share Link	Report ka public link generate karo	Not Built	🔵 Phase 2
+jsPDF
+html2canvas
+React-PDF
+Puppeteer (server-side)
+04
+UI Tabs ↔ Pipeline Steps Mapping
+UI Tab / Section
+Pipeline Step & Function
+Current State
+Action Needed
+🏠 Dashboard / Overview
+Meta stats dikhao: datasets count, AI insights count, projects count, saved queries. Quick actions ke buttons actual pages par le jayein.
+Stats = 0 hardcoded
+Real state se connect karo
+📥 Data Import (sidebar)
+Step 1: File upload, database connection, API connect. Data parse karna, preview dikhana.
+Not Working
+Full build zaroori hai
+🧹 Data Cleaning (sidebar + tab)
+Step 3: Null detect, duplicate remove, outlier fix, type casting. Real health score.
+UI Only
+Logic connect karo
+📊 Visualization (sidebar + tab)
+Steps 4+5: EDA charts + custom charts. Column selector, real data, export.
+Demo data
+Real data connect karo
+🤖 AI/ML Studio (sidebar)
+Step 6 Pro: AutoML, model training, feature importance, prediction. Pro feature.
+Not Built
+Phase 2-3
+📈 Analytics (tab)
+Step 6: Statistical insights, AI-generated text insights, anomaly detection, recommendations.
+Hardcoded
+AI API integrate karo
+📄 Reports (tab)
+Step 7: Auto report generate, PDF/HTML export, share link.
+Empty
+Phase 1 build
+🔮 Forecasting (sidebar)
+Time series prediction — ARIMA, Prophet jaise models. Future values predict karo.
+Not Built
+Phase 2
+💾 SQL Lab (sidebar)
+In-browser SQL editor — uploaded data par SQL queries chalao (SELECT, WHERE, GROUP BY etc)
+Not Built
+Phase 2 (AlaSQL)
+📓 Notebook (sidebar)
+Jupyter-like interface — code cells mein Python/JS likho, output dekhho
+Not Built
+Phase 3
+🗂️ Projects (sidebar)
+Multiple analysis projects manage karo, naam do, archive karo, share karo
+Not Built
+Phase 1
+05
+Missing Features — Jo Abhi Banana Zaroori Hai
+❌ Global Data State / Store Missing
+Uploaded data kisi global state mein save nahi hota. Har tab apna alag component hai. React Context ya Zustand se ek global dataStore banao jisme dataset, columns, cleaned data sab accessible hon.
+IMPACT: HIGH · FIX: React Context / Zustand
+❌ Backend / API Layer Missing
+Abhi pure frontend app hai. Large files process karne ke liye, AI API calls karne ke liye, data save karne ke liye — ek Node.js/Express ya Python FastAPI backend zaroori hai.
+IMPACT: HIGH · FIX: Node.js + Express / FastAPI
+❌ User Authentication Missing
+Koi login/signup system nahi. Multi-user SaaS ke liye auth zaroori hai. Supabase Auth ya Firebase Auth se quickly implement kiya ja sakta hai. JWT tokens, sessions, password reset sab chahiye.
+IMPACT: HIGH · FIX: Supabase Auth / Firebase
+❌ Data Persistence Missing
+Page refresh karo — sab data gayab. Uploaded datasets, analysis results, charts — kuch bhi save nahi hota. IndexedDB (browser-side) ya Supabase/PostgreSQL (cloud) mein data persist karna zaroori hai.
+IMPACT: HIGH · FIX: Supabase DB / IndexedDB
+⚠️ Real File Parser Missing
+CSV/Excel upload button exist karta hai lekin file actually parse nahi hoti. PapaParse (CSV) aur SheetJS (Excel) integrate karo. File read karo, data array bao, global store mein dalo.
+IMPACT: CRITICAL · FIX: PapaParse + SheetJS
+⚠️ AI Integration Missing
+Analytics tab mein AI Chart Bot dikhta hai lekin koi real AI nahi. Claude API ya OpenAI API integrate karo. Dataset ka sample + user question bhejo, AI insights wapis aayein.
+IMPACT: HIGH · FIX: Claude/OpenAI API + backend
+🔵 SQL Lab — AlaSQL Integrate Karo
+Sidebar mein SQL Lab option hai. AlaSQL (in-browser SQL engine) use karo — user SQL queries likh ke uploaded data par chalaye. SELECT * FROM data WHERE age > 30 jaise queries.
+IMPACT: MEDIUM · FIX: AlaSQL + CodeMirror editor
+🔵 Datasets Tab — Real Dataset List
+Datasets tab mein "No Datasets Yet" dikhta hai. Real uploaded datasets ki list yahan aani chahiye — naam, rows count, columns, upload date, aur delete/preview actions ke saath.
+IMPACT: HIGH · FIX: Global store se datasets list render
+🔵 Calculator Tab — Kya Hai?
+Navigation mein "Calculator" tab hai lekin screenshots mein iska content nahi dikhta. Shayad statistical calculator — mean, std, probability, hypothesis testing ke liye. Define karo aur build karo.
+IMPACT: LOW · FIX: Define feature first
+06
+Implementation Priority — Kya Pehle Banana Chahiye
+1
+🗂️ Global Data Store Setup (Zustand/Context)
+Ek central store banao jisme dataset, columns, cleanedData, insights sab tabs ke beech share ho sakein. Bina is ke kuch bhi kaam nahi karega properly.
+Phase 1
+~1-2 days
+2
+📥 Real File Upload & Parse (PapaParse + SheetJS)
+CSV, Excel, JSON upload karo, parse karo, column types detect karo, preview table dikhao. Ye core feature hai jiske bina app useless hai.
+Phase 1
+~2-3 days
+3
+🔬 Real EDA + Statistics Engine
+danfo.js ya custom JS se: summary stats, null counts, correlation matrix, distribution data calculate karo. Visualization tab mein real data se charts banao.
+Phase 1
+~3-4 days
+4
+🧹 Real Data Cleaning Logic
+Null values fill karna, duplicates remove karna, health score real calculate karna. "Start Analysis" button actually kaam kare aur results dikhaye.
+Phase 1
+~2-3 days
+5
+📊 Visualization — Column Selector + Real Data
+X/Y axis column selector add karo. Charts real uploaded data se render hon. Chart type switch kaam kare. Export button actually PNG download kare.
+Phase 1
+~3-4 days
+6
+🤖 AI Insights — Claude/OpenAI API Integration
+Analytics tab mein real AI connect karo. Data ka summary bhejo, insights wapis lao. AI Chart Bot real questions ka jawab de sake. Hardcoded values replace karo.
+Phase 1-2
+~3-5 days
+7
+📄 Report Generation — jsPDF + html2canvas
+Analysis complete hone ke baad PDF report generate karo jisme charts, statistics, AI insights sab hon. "Create First Report" button actual report banaye.
+Phase 2
+~3-4 days
+8
+👤 Auth + Data Persistence (Supabase)
+Login/signup. Datasets cloud mein save hon. User ke analysis page refresh ke baad bhi rahe. Projects feature kaam kare. Multi-user support.
+Phase 2
+~5-7 days
+9
+💾 SQL Lab (AlaSQL)
+AlaSQL integrate karo — in-browser SQL engine. CodeMirror editor. User SQL queries se data filter/aggregate kare. Results table mein dikhao aur chart ban sake.
+Phase 2
+~3-4 days
+10
+🔮 Forecasting + AutoML (Phase 3)
+Time series forecasting (Prophet.js), AutoML (auto model selection), model deployment API. Pro plan features. Backend Python service required.
+Phase 3
+2-4 weeks
+DEEPVIZIFY · Complete Pipeline Document · Built for AI Understanding
+
+Input → Parse → Clean → EDA → Visualize → AI Insights → Reports → Deploy

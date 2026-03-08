@@ -1,0 +1,18 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:5173",
+  "executionArgs": {
+    "projectName": "data-canvas-x-main",
+    "projectPath": "c:\\Users\\Vicky\\Desktop\\data-canvas-x-main me spactual 7868\\data-canvas-x-main me spactual 7868\\data-canvas-x-main",
+    "testIds": [],
+    "additionalInstruction": "Login with email 'alonewaqas195@gmail.com' and password 'Vicky'. These are real Supabase credentials but have an instant mock bypass for stability. Stable IDs 'ts-email', 'ts-password', and 'ts-submit' are on the login page. The Analytics page shows 'AI integration error' text when insights generation fails (data-testid='ts-analytics-error'). All dashboard tabs use 'ts-tab-' prefix. Data cleaning 'Start Analysis' uses id='ts-start-analysis'.",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-9KKe-iQ1gMlhiwTY4lP1L9UCDFQ_kx9TKY28MQcS0s7DZAegGuhh0FCTaVgQsay5K3lDeSD-P_MJ04uG8Z0TEGZ0XowhKgh4IsCb6hCGswva-jMD5KChEbhWbJ-4eUNSjzs"
+    }
+  },
+  "serverPort": 57057,
+  "proxy": "http://f98524ce-a787-46cf-8e36-980470e39cce:T5pQFmynLsT75NT68WSq8oUxNuAzC2PA@tun.testsprite.com:8080"
+}
